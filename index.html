@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Meghana 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Satisfy&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rose: #ff4f7b;
+    --gold: #ffd700;
+    --blush: #ffb3c6;
+    --deep: #1a0a2e;
+    --purple: #6b21a8;
+    --lavender: #c084fc;
+  }
+
+  html, body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--deep);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 20px; height: 20px;
+    background: var(--rose);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background 0.2s;
+    mix-blend-mode: screen;
+  }
+
+  /* Animated gradient BG */
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(107,33,168,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(255,79,123,0.5) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 80%, rgba(192,132,252,0.4) 0%, transparent 55%),
+      linear-gradient(135deg, #0d0221 0%, #1a0a2e 50%, #0f1035 100%);
+    animation: bgPulse 8s ease-in-out infinite alternate;
+    z-index: 0;
+  }
+  @keyframes bgPulse {
+    0% { filter: hue-rotate(0deg) brightness(1); }
+    100% { filter: hue-rotate(20deg) brightness(1.15); }
+  }
+
+  /* Stars */
+  .stars {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--d) ease-in-out infinite alternate;
+  }
+  @keyframes twinkle {
+    0% { opacity: 0.1; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* Floating petals / particles */
+  .petal {
+    position: fixed;
+    font-size: var(--fs);
+    animation: floatUp var(--dur) linear infinite;
+    animation-delay: var(--delay);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    left: var(--left);
+    top: 110vh;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-120vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* Floating quotes */
+  .floating-quote {
+    position: fixed;
+    font-family: 'Satisfy', cursive;
+    font-size: clamp(0.75rem, 1.5vw, 1rem);
+    color: rgba(255,255,255,0.18);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 2;
+    animation: driftQuote var(--qd) linear infinite;
+    animation-delay: var(--qdelay);
+    top: var(--qtop);
+  }
+  @keyframes driftQuote {
+    0% { transform: translateX(-120vw); opacity: 0; }
+    5% { opacity: 1; }
+    95% { opacity: 0.3; }
+    100% { transform: translateX(120vw); opacity: 0; }
+  }
+
+  /* Main container */
+  .main {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+
+  /* === COUNTDOWN PHASE === */
+  #countdown-phase {
+    text-align: center;
+    animation: fadeIn 1.5s ease forwards;
+  }
+
+  .pre-title {
+    font-family: 'Satisfy', cursive;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--blush);
+    letter-spacing: 4px;
+    margin-bottom: 0.5rem;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0%,100% { text-shadow: 0 0 10px rgba(255,179,198,0.5); }
+    50% { text-shadow: 0 0 30px rgba(255,79,123,0.9), 0 0 60px rgba(255,215,0,0.4); }
+  }
+
+  .main-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 12vw, 9rem);
+    font-weight: 900;
+    font-style: italic;
+    line-height: 0.9;
+    background: linear-gradient(135deg, #fff 0%, var(--gold) 35%, var(--rose) 65%, var(--lavender) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: nameGlow 3s ease-in-out infinite alternate;
+    letter-spacing: -2px;
+  }
+  @keyframes nameGlow {
+    0% { filter: drop-shadow(0 0 20px rgba(255,79,123,0.7)); }
+    100% { filter: drop-shadow(0 0 50px rgba(255,215,0,0.8)) drop-shadow(0 0 80px rgba(192,132,252,0.5)); }
+  }
+
+  .subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-top: 0.8rem;
+    font-weight: 300;
+  }
+
+  /* Countdown timer */
+  .countdown-wrap {
+    margin: 3rem auto 2rem;
+    display: flex;
+    gap: clamp(0.8rem, 3vw, 2.5rem);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .time-block {
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,215,0,0.3);
+    border-radius: 20px;
+    padding: clamp(1rem, 3vw, 1.8rem) clamp(1.2rem, 3.5vw, 2.2rem);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    min-width: clamp(70px, 18vw, 110px);
+    transition: transform 0.3s ease;
+  }
+  .time-block:hover { transform: translateY(-5px) scale(1.05); }
+  .time-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,79,123,0.1), rgba(192,132,252,0.1));
+    border-radius: 20px;
+  }
+  .time-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 900;
+    background: linear-gradient(180deg, #fff, var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    display: block;
+  }
+  .time-label {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,179,198,0.8);
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  .colon {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--rose);
+    align-self: center;
+    animation: blink 1s step-end infinite;
+    padding-bottom: 1rem;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  .advance-msg {
+    font-family: 'Satisfy', cursive;
+    font-size: clamp(1.1rem, 3vw, 1.8rem);
+    color: var(--blush);
+    margin-top: 1.5rem;
+    animation: pulseText 2.5s ease-in-out infinite;
+  }
+  @keyframes pulseText {
+    0%,100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.03); }
+  }
+
+  /* === BIRTHDAY PHASE === */
+  #birthday-phase {
+    display: none;
+    text-align: center;
+    animation: fadeIn 2s ease forwards;
+  }
+
+  .bday-header {
+    font-family: 'Satisfy', cursive;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    animation: shimmer 2s infinite;
+  }
+
+  .bday-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 14vw, 11rem);
+    font-weight: 900;
+    font-style: italic;
+    line-height: 0.85;
+    background: linear-gradient(135deg, #fff 0%, #ffd700 30%, #ff4f7b 60%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: nameGlow 2s ease-in-out infinite alternate;
+    display: block;
+  }
+
+  /* Images section */
+  .photos-container {
+    display: flex;
+    gap: clamp(1rem, 3vw, 2rem);
+    justify-content: center;
+    margin: 2.5rem auto;
+    flex-wrap: wrap;
+    max-width: 900px;
+  }
+  .photo-frame {
+    position: relative;
+    width: clamp(150px, 28vw, 240px);
+    aspect-ratio: 3/4;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 2px solid rgba(255,215,0,0.5);
+    box-shadow: 0 0 30px rgba(255,79,123,0.4), 0 0 60px rgba(107,33,168,0.3);
+    animation: floatPhoto 4s ease-in-out infinite alternate;
+    flex-shrink: 0;
+  }
+  .photo-frame:nth-child(2) { animation-delay: -1.5s; animation-duration: 5s; }
+  .photo-frame:nth-child(3) { animation-delay: -3s; animation-duration: 3.5s; }
+  @keyframes floatPhoto {
+    0% { transform: translateY(0) rotate(-1deg); }
+    100% { transform: translateY(-15px) rotate(1deg); }
+  }
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .photo-frame:hover img { transform: scale(1.08); }
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,10,46,0.7) 0%, transparent 50%);
+  }
+  .photo-tag {
+    position: absolute;
+    bottom: 12px;
+    left: 0; right: 0;
+    text-align: center;
+    z-index: 2;
+    font-family: 'Satisfy', cursive;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  }
+
+  /* Wish card */
+  .wish-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,215,0,0.25);
+    border-radius: 30px;
+    backdrop-filter: blur(20px);
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 5vw, 4rem);
+    max-width: 750px;
+    margin: 0 auto 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .wish-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(255,215,0,0.06), transparent, rgba(255,79,123,0.06), transparent);
+    animation: rotateBorder 8s linear infinite;
+  }
+  @keyframes rotateBorder { to { transform: rotate(360deg); } }
+  .wish-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+  .wish-sign {
+    margin-top: 1.2rem;
+    font-family: 'Satisfy', cursive;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--rose);
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Quote strip */
+  .quote-strip {
+    margin: 1rem auto;
+    font-family: 'Satisfy', cursive;
+    font-size: clamp(1.2rem, 3.5vw, 2rem);
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,215,0,0.6);
+    letter-spacing: 2px;
+    animation: quoteGlow 3s ease-in-out infinite alternate;
+  }
+  @keyframes quoteGlow {
+    0% { -webkit-text-stroke-color: rgba(255,215,0,0.4); }
+    100% { -webkit-text-stroke-color: rgba(255,79,123,0.9); text-shadow: 0 0 30px rgba(255,79,123,0.5); }
+  }
+
+  /* Confetti blobs */
+  .confetti-piece {
+    position: fixed;
+    width: 10px; height: 10px;
+    background: var(--c);
+    top: -20px;
+    left: var(--l);
+    border-radius: var(--br);
+    animation: confettiFall var(--d) linear var(--del) infinite;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+  }
+  @keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Emoji burst */
+  .emoji-row {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    letter-spacing: 0.5rem;
+    margin: 1rem 0;
+    animation: emojiDance 1s ease-in-out infinite alternate;
+  }
+  @keyframes emojiDance {
+    0% { transform: scale(1) rotate(-2deg); }
+    100% { transform: scale(1.05) rotate(2deg); }
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .countdown-wrap { gap: 0.5rem; }
+    .colon { font-size: 2rem; }
+    .photos-container { gap: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+
+<!-- Background -->
+<div class="bg-layer"></div>
+<div class="stars" id="stars"></div>
+
+<!-- Floating Quotes -->
+<div class="floating-quote" style="--qd:22s;--qdelay:0s;--qtop:15%">"Some souls light up the world just by existing ✨"</div>
+<div class="floating-quote" style="--qd:28s;--qdelay:-7s;--qtop:35%">"Born to sparkle, destined to shine 🌟"</div>
+<div class="floating-quote" style="--qd:20s;--qdelay:-12s;--qtop:55%">"A sister by heart, a queen by nature 👑"</div>
+<div class="floating-quote" style="--qd:25s;--qdelay:-4s;--qtop:72%">"Every day with you is a celebration 🎊"</div>
+<div class="floating-quote" style="--qd:30s;--qdelay:-18s;--qtop:88%">"Meghana — where magic meets grace 🌸"</div>
+<div class="floating-quote" style="--qd:18s;--qdelay:-9s;--qtop:25%">"Rare like a diamond, warm like the sun 💎"</div>
+
+<!-- Petals / emojis floating up -->
+<div id="petals"></div>
+
+<div class="main">
+
+  <!-- COUNTDOWN PHASE -->
+  <div id="countdown-phase">
+    <p class="pre-title">✨ Counting down to the Queen's Day ✨</p>
+    <h1 class="main-name">Meghana</h1>
+    <p class="subtitle">Birthday is almost here</p>
+
+    <div class="countdown-wrap">
+      <div class="time-block">
+        <span class="time-num" id="hours">00</span>
+        <span class="time-label">Hours</span>
+      </div>
+      <span class="colon">:</span>
+      <div class="time-block">
+        <span class="time-num" id="minutes">00</span>
+        <span class="time-label">Minutes</span>
+      </div>
+      <span class="colon">:</span>
+      <div class="time-block">
+        <span class="time-num" id="seconds">00</span>
+        <span class="time-label">Seconds</span>
+      </div>
+    </div>
+
+    <p class="advance-msg">🎂 Advance Happy Birthday Meghana! 🎂<br>
+    <span style="font-size:0.7em; font-family:'DM Sans'; color:rgba(255,255,255,0.5); font-style:normal">
+      — Your biggest fan is already celebrating you 💕
+    </span></p>
+  </div>
+
+  <!-- BIRTHDAY PHASE -->
+  <div id="birthday-phase">
+    <p class="bday-header">🎉 Today is the day! 🎉</p>
+    <span class="bday-name">Meghana</span>
+    <p class="quote-strip">"Happy Birthday, Queen 👑"</p>
+
+    <div class="emoji-row">🎂 🌸 💎 ✨ 🎊 🌺 🎈</div>
+
+    <div class="photos-container">
+      <div class="photo-frame">
+        <img src="images/1.jpg" alt="Meghana" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'240\' height=\'320\' viewBox=\'0 0 240 320\'%3E%3Crect fill=\'%23330033\' width=\'240\' height=\'320\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' fill=\'%23ff4f7b\' font-size=\'60\' text-anchor=\'middle\' dominant-baseline=\'middle\'%3E🌸%3C/text%3E%3C/svg%3E'">
+        <span class="photo-tag">Our Queen 👑</span>
+      </div>
+      <div class="photo-frame">
+        <img src="images/2.jpg" alt="Meghana" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'240\' height=\'320\' viewBox=\'0 0 240 320\'%3E%3Crect fill=\'%231a0a2e\' width=\'240\' height=\'320\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' fill=\'%23ffd700\' font-size=\'60\' text-anchor=\'middle\' dominant-baseline=\'middle\'%3E✨%3C/text%3E%3C/svg%3E'">
+        <span class="photo-tag">Pure Magic ✨</span>
+      </div>
+      <div class="photo-frame">
+        <img src="images/3.jpg" alt="Meghana" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'240\' height=\'320\' viewBox=\'0 0 240 320\'%3E%3Crect fill=\'%230f1035\' width=\'240\' height=\'320\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' fill=\'%23c084fc\' font-size=\'60\' text-anchor=\'middle\' dominant-baseline=\'middle\'%3E💎%3C/text%3E%3C/svg%3E'">
+        <span class="photo-tag">Forever Glowing 🌺</span>
+      </div>
+    </div>
+
+    <div class="wish-card">
+      <p class="wish-text">
+        "To the one who makes every room brighter just by walking in —
+        Happy Birthday, Meghana! 🌸 You are not just a friend, you are the 
+        sister my heart chose. May this year be as extraordinary, radiant, 
+        and full of joy as you are. The world is lucky to have you in it.
+        Wishing you infinite love, laughter, and all the beautiful things 
+        life has to offer. You deserve every single bit of magic. 💫"
+      </p>
+      <span class="wish-sign">— From your person, with all the love 💕</span>
+    </div>
+
+    <p class="quote-strip" style="font-size:clamp(1rem,2.5vw,1.5rem); margin-top:1rem">
+      "You are the vibe, the energy & the whole celebration 🎊"
+    </p>
+  </div>
+
+</div>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  // Stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 3 + 0.5;
+    s.style.cssText = `
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}%;top:${Math.random()*100}%;
+      --d:${Math.random()*4+2}s;
+      animation-delay:${Math.random()*5}s;
+    `;
+    starsEl.appendChild(s);
+  }
+
+  // Floating petals
+  const petalEl = document.getElementById('petals');
+  const emojis = ['🌸','✨','💕','🌺','🎊','💫','⭐','🌟','🎀','🌷','💖','🎈'];
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    p.style.cssText = `
+      --fs:${Math.random()*1.5+1}rem;
+      --dur:${Math.random()*10+12}s;
+      --delay:${Math.random()*15}s;
+      --left:${Math.random()*100}vw;
+    `;
+    petalEl.appendChild(p);
+  }
+
+  // Countdown target: Feb 20, 2026 00:00:00
+  function getBirthdayTarget() {
+    const now = new Date();
+    // Target is midnight Feb 20 in local time
+    const target = new Date(now.getFullYear(), 1, 20, 0, 0, 0, 0); // month is 0-indexed
+    // If we're already past Feb 20 midnight
+    if (now >= target) return null; // birthday mode
+    return target;
+  }
+
+  function pad(n) { return String(n).padStart(2,'0'); }
+
+  function updateCountdown() {
+    const target = getBirthdayTarget();
+    if (!target) {
+      // Switch to birthday mode
+      document.getElementById('countdown-phase').style.display = 'none';
+      document.getElementById('birthday-phase').style.display = 'block';
+      spawnConfetti();
+      clearInterval(timerInterval);
+      return;
+    }
+    const diff = target - new Date();
+    const totalSecs = Math.floor(diff / 1000);
+    const h = Math.floor(totalSecs / 3600);
+    const m = Math.floor((totalSecs % 3600) / 60);
+    const s = totalSecs % 60;
+    document.getElementById('hours').textContent = pad(h);
+    document.getElementById('minutes').textContent = pad(m);
+    document.getElementById('seconds').textContent = pad(s);
+  }
+
+  const timerInterval = setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // If birthday already, show birthday phase immediately
+  if (!getBirthdayTarget()) {
+    document.getElementById('countdown-phase').style.display = 'none';
+    document.getElementById('birthday-phase').style.display = 'block';
+    spawnConfetti();
+  }
+
+  function spawnConfetti() {
+    const colors = ['#ff4f7b','#ffd700','#c084fc','#fff','#ff6eb4','#a78bfa','#fbbf24'];
+    for (let i = 0; i < 60; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      const br = Math.random() > 0.5 ? '50%' : (Math.random() > 0.5 ? '0%' : '4px');
+      c.style.cssText = `
+        --c:${colors[Math.floor(Math.random()*colors.length)]};
+        --l:${Math.random()*100}vw;
+        --d:${Math.random()*4+3}s;
+        --del:${Math.random()*5}s;
+        --br:${br};
+        width:${Math.random()*10+5}px;
+        height:${Math.random()*16+5}px;
+      `;
+      document.body.appendChild(c);
+    }
+  }
+</script>
+</body>
+</html>
